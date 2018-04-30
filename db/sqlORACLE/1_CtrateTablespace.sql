@@ -1,0 +1,9 @@
+alter session set "_ORACLE_SCRIPT"=true;  
+create user aframe identified by aframe;
+
+ALTER USER "AFRAME"  IDENTIFIED BY aframe 
+DEFAULT TABLESPACE "AFRAME"
+TEMPORARY TABLESPACE "TEMP"
+ACCOUNT UNLOCK ;
+-- ROLES
+GRANT "CONNECT" TO "AFRAME" ;
