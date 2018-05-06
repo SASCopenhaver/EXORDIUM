@@ -4,15 +4,15 @@
 <cfdump var="#URL.urlMENU_PAGE_NAME#" >
 --->
 
-<!---
+
 <cfset session.cfcPROC_NAME = "PKG_UI_DML.P_UI_MENU_DRIVER_s">
 <cfset local.spr_P_UI_MENU_DRIVER_s = application.dot.objcfc.cfc_sqlWHERE_ORDER(PP_SQL_WHERE_TX: "WHERE ACTIVE_YN='Y' ", 
 																				PP_SQL_ORDER_TX: "ORDER BY ORD_NR ")>
 <cfset local.sprSerializeJSON_P_UI_MENU_DRIVER_s = SerializeJSON("#local.spr_P_UI_MENU_DRIVER_s#")>
-<cfdump var="#local.sprSerializeJSON_P_UI_MENU_DRIVER_s#" abort="true" >
+<!---<cfdump var="#local.sprSerializeJSON_P_UI_MENU_DRIVER_s#" abort="true" >--->
+<!---
+<cfset local.sprSerializeJSON_P_UI_MENU_DRIVER_s = '{"COLUMNS":["ROWID","MENU_ID","MENU_TX","MENU_PAGE_NAME","ORD_NR","ACTIVE_YN"],"DATA":[["AAAYWCAAOAAAAC8AAB",15,"HOME","modules/welcome/welcome.cfm",10,"Y"],["AAAYWCAAOAAAAC9AAD",4,"RESUME","modules/resume/resume.cfm",20,"Y"],["AAAYWCAAOAAAAC8AAA",25,"APPROACH","modules/big_picture/big_picture.cfm",30,"Y"],["AAAYWCAAOAAAAC9AAC",2,"FFRONT END","modules/fe/front_end.cfm",40,"Y"],["AAAYWCAAOAAAAC9AAB",1,"DATABASE","modules/dbase/data_base.cfm",50,"Y"],["AAAYWCAAOAAAAC9AAA",3,"DATA ENTRY","modules/sample/page_sample.cfm",60,"Y"],["AAAYWCAAOAAAAC9AAE",45,"EARTHQUAKE REPORT","modules/earthquake/earthquake.cfm",70,"Y"]]}'>
 --->
-<cfset local.sprSerializeJSON_P_UI_MENU_DRIVER_s = '{"COLUMNS":["ROWID","MENU_ID","MENU_TX","MENU_PAGE_NAME","ORD_NR","ACTIVE_YN"],"DATA":[["AAAYWCAAOAAAAC8AAB",15,"HOME","modules/welcome/welcome.cfm",10,"Y"],["AAAYWCAAOAAAAC9AAD",4,"RESUME","modules/resume/resume.cfm",20,"Y"],["AAAYWCAAOAAAAC8AAA",25,"APPROACH","modules/big_picture/big_picture.cfm",30,"Y"],["AAAYWCAAOAAAAC9AAC",2,"FFRONT END","modules/fe/front_end.cfm",40,"N"],["AAAYWCAAOAAAAC9AAB",1,"DATABASE","modules/dbase/data_base.cfm",50,"Y"],["AAAYWCAAOAAAAC9AAA",3,"PAGE SAMPLE","modules/sample/page_sample.cfm",60,"Y"]]}'>
-
 
 <!---
 <cfset session.cfcPROC_NAME = "PKG_UI_DML.P_UI_ELEMENT_DRIVER_s">
@@ -370,7 +370,7 @@ var vInitIncPageSample =
 		
 	}
 	,initStyle: function(){
-		$("input[id^='spn']").spinner({min: 10, max: 70, step: 10});
+		$("input[id^='spn']").spinner({min: 10, max: 100, step: 10});
 		$('select[id^="sel"]').selectmenu({width: 80});
 	}
 	,initHideNewRecord: function(){
@@ -465,139 +465,6 @@ function f_onClickCBN_PageSample(argCBName)
 					if (vValidationPassed == "NO"){ return false; }	
 				});				
 			}
-			
-			
-//			$.each(aryMandField, function(key, value){
-//				vMandField = value;
-//				if (vIsNewRowVisible)//true
-//				{
-//					$("[id^="+vMandField+"]").each(function(i, obj){
-//						var vElemID = this.id;
-//						var vElemVal = $("#"+vElemID).val();
-//						var vElemLength = vElemVal.length;
-//						if( vElemLength == 0)
-//					 	{
-//							vValidationPassed = "NO";
-//							$("#"+vElemID).focus();
-//							of_ShowHideMsg("show","error","System cannot procedd your request. All mandatory field(s) must have values.",3000);
-//						}
-//						else
-//						{
-//							vValidationPassed = "YES";
-//							of_ShowHideMsg("show","highlight","Record has been saved or updated.",3000);
-//						}
-//					});
-//				}
-//				else//false
-//				{
-//					//vValidationPassed = "YES";
-//					//of_ShowHideMsg("show","highlight","Record has been saved or updated.",3000);
-//				}
-//				
-//				if (vValidationPassed == "NO"){ return false; }
-//				
-//			});			
-			
-			
-//			if ( $("#trrNewRecord").is(':visible')) 
-//			{
-//				 $("[id^=txtMENU_TX]").each(function(i, obj){
-//				 	var vElemID = this.id;
-//				 	var vElemVal = $("#"+vElemID).val();
-//				 	var vElemLength = vElemVal.length;
-//				 	//alert( vElemID+"  |"+vElemVal+"| "+vElemVal.length )
-//				 	if( vElemLength == 0)
-//				 	{
-//						vValidationPassed = "NO";
-//						$("#"+vElemID).focus();
-//						of_ShowHideMsg("show","error","System cannot procedd your request. Not all mandatory field(s) have data.",3000);
-//						return false;
-//						
-//				 	} 
-//				 	else{
-//				 		//$("#"+vElemID).focus();
-//				 		vValidationPassed = "YES";
-//						of_ShowHideMsg("show","highlight","Record has been saved or updated.",3000);
-//				 	}
-//
-//				 });
-//			}
-//			else //$("#trrNewRecord").is(':hidden')) 
-//			{
-//				 $("[id^=txtMENU_TX]").each(function(i, obj){
-//				 	var vElemID = this.id;
-//				 	var vElemVal = $("#"+vElemID).val();
-//				 	var vElemLength = vElemVal.length;
-//				 	//alert( vElemID+"  |"+vElemVal+"| "+vElemVal.length )
-//				 	if( vElemID != "txtMENU_TX_0" && vElemLength == 0)
-//				 	{
-//						vValidationPassed = "NO";
-//						$("#"+vElemID).focus();
-//						of_ShowHideMsg("show","error","System cannot procedd your request. Not all mandatory field(s) have data.",3000);
-//						return false;
-//						
-//				 	} 
-//				 	else{
-//				 		//$("#"+vElemID).focus();
-//				 		vValidationPassed = "YES";
-//						of_ShowHideMsg("show","highlight","Record has been updated.",3000);
-//				 	}
-//				 	
-//
-//				 });
-//			}
-//			//
-//			if (vValidationPassed === "YES")
-//			{
-//					if ( $("#trrNewRecord").is(':visible') ) 
-//					{
-//						 $("[id^=txtMENU_PAGE_NAME]").each(function(i, obj){
-//						 	var vElemID = this.id;
-//						 	var vElemVal = $("#"+vElemID).val();
-//						 	var vElemLength = vElemVal.length;
-//						 	//alert( vElemID+"  |"+vElemVal+"| "+vElemVal.length )
-//						 	if( vElemLength == 0)
-//						 	{
-//								vValidationPassed = "NO";
-//								$("#"+vElemID).focus();
-//								of_ShowHideMsg("show","error","System cannot procedd your request. Not all mandatory field(s) have data.",3000);
-//								return false;
-//								
-//						 	} 
-//						 	else{
-//						 		//$("#"+vElemID).focus();
-//						 		vValidationPassed = "YES";
-//								of_ShowHideMsg("show","highlight","Record has been saved or updated.",3000);
-//						 	}
-//		
-//						 });
-//					}
-//					else //$("#trrNewRecord").is(':hidden')) 
-//					{
-//						 $("[id^=txtMENU_PAGE_NAME]").each(function(i, obj){
-//						 	var vElemID = this.id;
-//						 	var vElemVal = $("#"+vElemID).val();
-//						 	var vElemLength = vElemVal.length;
-//						 	//alert( vElemID+"  |"+vElemVal+"| "+vElemVal.length )
-//						 	if( vElemID != "txtMENU_TX_0" && vElemLength == 0)
-//						 	{
-//								vValidationPassed = "NO";
-//								$("#"+vElemID).focus();
-//								of_ShowHideMsg("show","error","System cannot procedd your request. Not all mandatory field(s) have data.",3000);
-//								return false;
-//								
-//						 	} 
-//						 	else{
-//						 		//$("#"+vElemID).focus();
-//						 		vValidationPassed = "YES";
-//								of_ShowHideMsg("show","highlight","Record has been updated.",3000);
-//						 	}
-//						 	
-//		
-//						 });
-//					}
-//				}
-			
 		break;
 		//
 	}

@@ -1,13 +1,13 @@
-<!---
+
 <cfset session.cfcPROC_NAME = "PKG_UI_DML.P_UI_MENU_DRIVER_s">
 <cfset local.spr_P_UI_MENU_DRIVER_s = application.dot.objcfc.cfc_sqlWHERE_ORDER(PP_SQL_WHERE_TX: "WHERE ACTIVE_YN='Y' ", 
 																				PP_SQL_ORDER_TX: "ORDER BY ORD_NR ")>
 <cfset local.sprSerializeJSON_P_UI_MENU_DRIVER_s = SerializeJSON("#local.spr_P_UI_MENU_DRIVER_s#")>
-<cfdump var="#local.sprSerializeJSON_P_UI_MENU_DRIVER_s#" abort="true" >
+<!---<cfdump var="#local.sprSerializeJSON_P_UI_MENU_DRIVER_s#" abort="true" >--->
+
+<!---
+<cfset local.sprSerializeJSON_P_UI_MENU_DRIVER_s = '{"COLUMNS":["ROWID","MENU_ID","MENU_TX","MENU_PAGE_NAME","ORD_NR","ACTIVE_YN"],"DATA":[["AAAYWCAAOAAAAC8AAB",15,"HOME","modules/welcome/welcome.cfm",10,"Y"],["AAAYWCAAOAAAAC9AAD",4,"RESUME","modules/resume/resume.cfm",20,"Y"],["AAAYWCAAOAAAAC8AAA",25,"APPROACH","modules/big_picture/big_picture.cfm",30,"Y"],["AAAYWCAAOAAAAC9AAC",2,"FFRONT END","modules/fe/front_end.cfm",40,"Y"],["AAAYWCAAOAAAAC9AAB",1,"DATABASE","modules/dbase/data_base.cfm",50,"Y"],["AAAYWCAAOAAAAC9AAA",3,"DATA ENTRY","modules/sample/page_sample.cfm",60,"Y"],["AAAYWCAAOAAAAC9AAE",45,"EARTHQUAKE REPORT","modules/earthquake/earthquake.cfm",70,"Y"]]}'>
 --->
-
-<cfset local.sprSerializeJSON_P_UI_MENU_DRIVER_s = '{"COLUMNS":["MENU_ID","MENU_TX","MENU_PAGE_NAME","ORD_NR","ACTIVE_YN"],"DATA":[[5,"HOME","modules/welcome/welcome.cfm",10,"Y"],[4,"RESUME","modules/resume/resume.cfm",20,"Y"],[25,"APPROACH","modules/big_picture/big_picture.cfm",30,"Y"],[2,"FRONT END","modules/fe/front_end.cfm",40,"Y"],[1,"DATABASE","modules/dbase/data_base.cfm",50,"Y"],[3,"PAGE SAMPLE","modules/sample/page_sample.cfm",60,"Y"]]}'>
-
 <div id="divNav" ></div>
 
 <script>
@@ -43,11 +43,12 @@ var vInitNav =
 		
 		$.each(vParsedP_UI_MENU_DRIVER_s.DATA, function(key, value)
 		{
-			vMENU_ID = value[0];
-			vMENU_TX = value[1];
-			vMENU_PAGE_NAME = value[2];
-			vORD_NR = value[3];
-			vACTIVE_YN = value[4];
+			vROWID = value[0];
+			vMENU_ID = value[1];
+			vMENU_TX = value[2];
+			vMENU_PAGE_NAME = value[3];
+			vORD_NR = value[4];
+			vACTIVE_YN = value[5];
 		
 			td = document.createElement("td");
 			cellTxt = document.createTextNode(vMENU_TX);
@@ -103,11 +104,12 @@ var vInitNav =
 		{
 			if (key === 0)
 			{
-				vMENU_ID = value[0];
-				vMENU_TX = value[1];
-				vMENU_PAGE_NAME = value[2];
-				vORD_NR = value[3];
-				vACTIVE_YN = value[4];
+				vROWID = value[0];
+				vMENU_ID = value[1];
+				vMENU_TX = value[2];
+				vMENU_PAGE_NAME = value[3];
+				vORD_NR = value[4];
+				vACTIVE_YN = value[5];
 				
 				f_onClickNav(vMENU_ID,vMENU_TX,vMENU_PAGE_NAME)// in this case,it is "modules/welcome/welcome.cfm"
 				return false;

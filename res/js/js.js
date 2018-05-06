@@ -215,7 +215,6 @@ function of_buildCheckBox(argROWID, argELEMENT_ID, argMENU_ID, argPAGE_ID, argEL
 		
 	return eChekBox;
 }
-//------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
 function of_ShowHideMsg(argAction,	//"show" or "hide"
@@ -270,7 +269,27 @@ function of_ShowHideMsg(argAction,	//"show" or "hide"
 		$(vdivMsgContainer).empty();
 		vdivMsgContainer.appendChild(vdivUiWidget);
 		$(vdivUiWidget).slideDown(800).delay(argDelay).slideUp(1000);	
+}	
+//------------------------------------------------------------------------------
+
+function of_create_h_Element(argValue)
+{// argValue is a number, represents asking h (heading) size:
+// For custom "h" style reffer to: https://www.w3schools.com/tags/tag_hn.asp
+	var vRtnH = {};
+	vRtnH = document.createElement("h"+argValue);
+
+//	if 		(argValue === 1 ){ vRtnH = document.createElement("h1")}
+//    else if (argValue === 2 ){ vRtnH = document.createElement("h2")}
+//    else if (argValue === 3 ){ vRtnH = document.createElement("h3")}
+//    else if (argValue === 4 ){ vRtnH = document.createElement("h4")}
+//    else if (argValue === 5 ){ vRtnH = document.createElement("h5")}
+//    else if (argValue === 6 ){ vRtnH = document.createElement("h6")}
+//    else					 { vRtnH = document.createElement("h6")}
+
+	return vRtnH;
 }
+//------------------------------------------------------------------------------
+
 //------------------------------------------------------------------------------
 function jsdump(arr,level) {
 /**
